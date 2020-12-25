@@ -6,4 +6,4 @@ Get dayli trends on GitHub
 
 ## TODO :
 
-[ ] Request Params
+[] Request Params
