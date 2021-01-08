@@ -12,4 +12,10 @@ app.get('/', async (req, res) => {
   res.send(trends)
 })
 
-app.listen(PORT, () => `Listening on PORT ${PORT}`)
+app.get('/trends', async (req, res) => {
+  const { lang, spoken, since } = req.query
+  const trends = await fetchTrends(lang, spoken, since)
+  res.send(trends)
+})
+
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))

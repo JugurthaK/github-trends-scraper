@@ -6,10 +6,8 @@ let url = 'https://github.com/trending'
 const fetchTrends = async (lang, spoken, since) => {
   if (lang) url = `${url}/${lang}`
   if (spoken) url = `${url}?spoken_language_code=${spoken}`
-  if (since)
-    spoken ? (url = `${url}&since=${since}`) : (url = `${url}?since=${since}`)
+  if (since) url = `${url}${spoken ? '?' : '&'}since=${since}`
 
-  console.log(url)
   const { data } = await axios.get(url)
   const $ = cheerio.load(data)
   const trends = $('article.Box-row')
